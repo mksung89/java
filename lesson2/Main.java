@@ -156,7 +156,42 @@ public class Main
         scanner.close();
     }
       
-       
+    public static void q8()
+    {
+        Scanner scanner = new Scanner(System.in);
+        
+        // // 정답 입력 받기
+        System.out.print("정답을 입력하세요 (0-9 사이의 서로 다른 3개 숫자): ");
+        int answer1 = scanner.nextInt();
+        int answer2 = scanner.nextInt();
+        int answer3 = scanner.nextInt();
+        
+        // 추측 입력 받기
+        System.out.print("추측을 입력하세요 (0-9 사이의 서로 다른 3개 숫자): ");
+        int guess1 = scanner.nextInt();
+        int guess2 = scanner.nextInt();
+        int guess3 = scanner.nextInt();
+        
+        // 스트라이크와 볼 계산
+        int strikes = 0;
+        int balls = 0;
+
+        // 스트라이크 계산
+        if (answer1 == guess1) strikes++;
+        if (answer2 == guess2) strikes++;
+        if (answer3 == guess3) strikes++;
+
+        // 볼 계산
+        if (answer1 == guess2 || answer1 == guess3) balls++;
+        if (answer2 == guess1 || answer2 == guess3) balls++;
+        if (answer3 == guess1 || answer3 == guess2) balls++;
+
+        // 결과 출력
+        System.out.println(strikes + " 스트라이크 " + balls + " 볼");
+        
+        scanner.close();
+        
+    }
     
     public static void main(String[] args) 
     {
@@ -165,7 +200,7 @@ public class Main
        // q2();
        //q3();
       // q5();
-      q6();
+      //q6();
       //q3_1();
       //q3_2();
       

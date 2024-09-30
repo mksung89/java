@@ -6,59 +6,80 @@ public class Main
     public static void q1()
     {
       
-       // 두 값을 변수에 선언
-        double num1 = 10.0;
-        double num2 = 3.0;
+        Scanner scanner = new Scanner(System.in);
 
-        // 나누기 연산
-        double result = num1 / num2;
+        System.out.print("첫 번째 정수를 입력하세요: ");
+        int num1 = scanner.nextInt();
 
-        // 결과 출력
-        System.out.println("10 / 3의 결과: " + result);
+        System.out.print("두 번째 정수를 입력하세요: ");
+        int num2 = scanner.nextInt();
+
+        if (num1 > num2)
+               System.out.println(num1 + " > " + num2 );
+        if (num1 < num2)
+            System.out.println(num1 + " < " + num2 );
+        if (num1 == num2)
+            System.out.println(num1 + " == " + num2);
+        if (num1 != num2)
+            System.out.println(num1 + " != " + num2);
+        if (num1 >= num2)
+            System.out.println(num1 + " >= " + num2);
+        if (num1 <= num2)
+        System.out.println(num1 + " <= " + num2);
+
+        scanner.close();
     }
       
     public static void q2()
     {
-       Scanner sc = new Scanner(System.in);
-        
-        // 정수 입력 받기
-        System.out.print("정수를 입력하세요: ");
-        int number = sc.nextInt();
-        
-        System.out.println(number);
-        
-        // 3의 배수인지 확인
-        boolean isMultipleOfThree = (number % 3 == 0);
-        
+       // 지구의 반지름 (km)
+        final double RADIUS = 6371.01;
+
+        Scanner scanner = new Scanner(System.in);
+
+        // 첫 번째 지점의 위도와 경도 입력
+        System.out.print("첫 번째 지점의 위도(x1)를 입력하세요 (단위: 도): ");
+        double x1 = Math.toRadians(scanner.nextDouble()); // 라디안으로 변환
+        System.out.print("첫 번째 지점의 경도(y1)를 입력하세요 (단위: 도): ");
+        double y1 = Math.toRadians(scanner.nextDouble()); // 라디안으로 변환
+
+        // 두 번째 지점의 위도와 경도 입력
+        System.out.print("두 번째 지점의 위도(x2)를 입력하세요 (단위: 도): ");
+        double x2 = Math.toRadians(scanner.nextDouble()); // 라디안으로 변환
+        System.out.print("두 번째 지점의 경도(y2)를 입력하세요 (단위: 도): ");
+        double y2 = Math.toRadians(scanner.nextDouble()); // 라디안으로 변환
+
+        // 거리 계산
+        double distance = RADIUS * Math.acos(Math.sin(x1) * Math.sin(x2) +
+                         Math.cos(x1) * Math.cos(x2) * Math.cos(y1 - y2));
+
         // 결과 출력
-        System.out.println(isMultipleOfThree);
+        System.out.printf("두 지점 사이의 거리: %.2f km\n", distance);
+
+        scanner.close();
         
-        sc.close();
-        
+       
         
     }
     
     public static void q3()
     {
         Scanner scanner = new Scanner(System.in);
-        
-        // 영문자 한 글자 입력 받기
-        System.out.print("영문자 한 글자를 입력하세요: ");
-        String i = scanner.nextLine();   //엔터 입력까지 입력
 
-        char aa = i.charAt(0);
-        
-        // 모음인지 자음인지 확인
-        if (Character.isLetter(aa)) {
-            if ("aeiouAEIOU".indexOf(aa) != -1) {
-                System.out.println("모음입니다.");
-            } else {
-                System.out.println("자음입니다.");
+        System.out.print("양의 정수 N을 입력하세요: ");
+        int N = scanner.nextInt();
+
+        int i = 1; // 약수를 찾기 위한 변수
+        System.out.print("N의 약수: ");
+
+        // N의 약수를 찾기 위한 while 문
+        while (i <= N) {
+            if (N % i == 0) {
+                System.out.print(i + " "); // 약수 출력
             }
-        } else {
-            System.out.println("영문자가 아닙니다.");
+            i++; // i를 증가시킴
         }
-        
+
         scanner.close();
         
     }
@@ -66,133 +87,198 @@ public class Main
     public static void q4()
     {
         
-         // long 타입 변수 선언
-        long value1 = 2322331L;
-        long value2 = 52341241L;
+       Scanner scanner = new Scanner(System.in);
 
-        // long을 int로 변환
-        int intValue1 = (int) value1;
-        int intValue2 = (int) value2;
+        // 1. 국어, 영어, 수학 점수를 입력 받음
+        System.out.print("국어, 영어, 수학 점수를 입력하세요 (0 ~ 100): ");
+        int korean = scanner.nextInt();
+        int english = scanner.nextInt();
+        int math = scanner.nextInt();
 
-        // 결과 출력
-        System.out.println("long 값 1: " + value1 + " -> int 값 1: " + intValue1);
-        System.out.println("long 값 2: " + value2 + " -> int 값 2: " + intValue2);
+        // 2. 평균 계산
+        double average = (korean + english + math) / 3.0;
+
+        // 3. 학점 결정
+        char grade;
+        if (average >= 75) {
+            grade = 'A';
+        } else if (average >= 50) {
+            grade = 'B';
+        } else {
+            grade = 'F';
+        }
+
+        // 4. 결과 출력
+        System.out.printf("%.2f %c\n", average, grade);
+
+        scanner.close();
     }
     
     public static void q5()
     {
-        
-         // 문자열 선언
-        String str1 = "23";
-        String str2 = "4566";
+        Scanner scanner = new Scanner(System.in);
 
-        // 문자열을 int로 변환
-        int intValue1 = Integer.parseInt(str1);
-        int intValue2 = Integer.parseInt(str2);
+        // 음료 선택 입력
+        System.out.print("음료 종류를 선택하세요 (1: Americano, 2: Cafe Latte, 3: Lemon Tea): ");
+        int N = scanner.nextInt();
+
+        // 투입한 금액 입력
+        System.out.print("투입한 금액을 입력하세요 (100의 배수): ");
+        int M = scanner.nextInt();
+
+        // 음료 가격과 이름 초기화
+        String beverage = "";
+        int price = 0;
+
+        // 음료 종류에 따른 가격 설정
+        switch (N) {
+            case 1:
+                beverage = "Americano";
+                price = 500;
+                break;
+            case 2:
+                beverage = "Cafe Latte";
+                price = 400;
+                break;
+            case 3:
+                beverage = "Lemon Tea";
+                price = 300;
+                break;
+            default:
+                System.out.println("잘못된 음료 선택입니다.");
+                scanner.close();
+                return; // 프로그램 종료
+        }
+
+        // 잔돈 계산
+        int change = M - price;
+        int num500 = change / 500; // 500원 짜리 개수
+        change %= 500; // 잔돈에서 500원 짜리를 뺀 나머지
+        int num100 = change / 100; // 100원 짜리 개수
 
         // 결과 출력
-        System.out.println("str1의 int 값: " + intValue1);
-        System.out.println("str2의 int 값: " + intValue2);
+        System.out.println(beverage + "를 선택하셨습니다.");
+        System.out.println("잔돈: " + num500 + "개 (500원), " + num100 + "개 (100원)");
+
+        scanner.close();
+        
     }
     
     public static void q6()
     {
-        
         Scanner scanner = new Scanner(System.in);
-        
-        // 정수 입력 받기
-        System.out.print("0과 30 사이의 정수를 입력하세요: ");
-        int x = scanner.nextInt();
-        
-        // 조건에 따른 출력
-        if (x >= 0 && x < 10) {
-            System.out.println("0보다 크고 10 미만입니다.");
-        } else if (x >= 10 && x < 20) {
-            System.out.println("10보다 크고 20 미만입니다.");
-        } else if (x >= 20 && x <= 30) {
-            System.out.println("20보다 크고 30 미만입니다.");
-        } else {
-            System.out.println("0과 30사이의 값을 입력하세요.");
+
+        // 양의 정수 N 입력
+        System.out.print("양의 정수 N을 입력하세요: ");
+        int N = scanner.nextInt();
+
+        // 삼각형 출력
+        for (int i = 0; i < N; i++) {
+            // 공백 출력
+            for (int j = 0; j < N - i - 1; j++) {
+                System.out.print(" "); // 공백 출력
+            }
+            // 별 출력
+            for (int k = 0; k < 2 * i + 1; k++) {
+                System.out.print("*"); // 별 출력
+            }
+            // 줄 바꿈
+            System.out.println();
         }
-        
+
         scanner.close();
+        
     }
     
     public static void q7()
     {
         Scanner scanner = new Scanner(System.in);
-        
-        // 두 개의 양의 정수 입력 받기
-        System.out.print("두 개의 양의 정수를 입력하세요 (N, M): ");
-        int N = scanner.nextInt();
-        int M = scanner.nextInt();
-        
-        // 곱셈 관계 확인
-        boolean foundRelation = false;
 
-        // N이 M의 제곱인 경우
-        if (M > 0 && N % M == 0) {
-            int factor = N / M;
-            if (factor == M) {
-                System.out.println(M + "*" + M + " = " + N);
-                foundRelation = true;
+        // 기준 정수 입력
+        System.out.print("기준 정수를 입력하세요: ");
+        int answer = scanner.nextInt();
+        
+        int guess;
+        int attempts = 0;
+
+        do {
+            // 정수 입력
+            System.out.print("정답 입력: ");
+            guess = scanner.nextInt();
+            attempts++; // 시도 횟수 증가
+
+            // 대소 관계 출력
+            if (guess < answer) {
+                System.out.println(guess + "보다 높습니다");
+            } else if (guess > answer) {
+                System.out.println(guess + "보다 낮습니다");
+            } else {
+                System.out.println(guess + " 정답입니다");
             }
-        }
 
-        // M이 N의 제곱인 경우
-        if (N > 0 && M % N == 0) {
-            int factor = M / N;
-            if (factor == N) {
-                System.out.println(N + "*" + N + " = " + M);
-                foundRelation = true;
-            }
-        }
+        } while (guess != answer); // 정답이 아닐 경우 반복
 
-        // 곱셈 관계가 없는 경우
-        if (!foundRelation) {
-            System.out.println("none");
-        }
-        
+        // 시도 횟수 출력
+        System.out.println("시도횟수는 " + attempts + "입니다");
+
         scanner.close();
     }
       
-    public static void q8()
-    {
+     public static void q8()
+     {
         Scanner scanner = new Scanner(System.in);
-        
-        // // 정답 입력 받기
-        System.out.print("정답을 입력하세요 (0-9 사이의 서로 다른 3개 숫자): ");
-        int answer1 = scanner.nextInt();
-        int answer2 = scanner.nextInt();
-        int answer3 = scanner.nextInt();
-        
-        // 추측 입력 받기
-        System.out.print("추측을 입력하세요 (0-9 사이의 서로 다른 3개 숫자): ");
-        int guess1 = scanner.nextInt();
-        int guess2 = scanner.nextInt();
-        int guess3 = scanner.nextInt();
-        
-        // 스트라이크와 볼 계산
-        int strikes = 0;
-        int balls = 0;
+        char[] characters = new char[7];
 
-        // 스트라이크 계산
-        if (answer1 == guess1) strikes++;
-        if (answer2 == guess2) strikes++;
-        if (answer3 == guess3) strikes++;
+        // 7개의 문자 입력 받기
+        System.out.print("7개의 문자를 입력하세요: ");
+        String temp = scanner.next();
+               
+        // 문자 배열을 문자열로 변환
+        for (int i=0; i<7; i++)
+           characters[i] = temp.charAt(i);
+        
+        // "cat"의 개수 세기
+        int count = 0;
+        int index = 0;
 
-        // 볼 계산
-        if (answer1 == guess2 || answer1 == guess3) balls++;
-        if (answer2 == guess1 || answer2 == guess3) balls++;
-        if (answer3 == guess1 || answer3 == guess2) balls++;
+        while ((index = temp.indexOf("cat", index)) != -1) {
+            count++;
+            index += 3; // "cat"의 길이만큼 이동
+        }
 
         // 결과 출력
-        System.out.println(strikes + " 스트라이크 " + balls + " 볼");
-        
+        System.out.println(count);
+
         scanner.close();
-        
-    }
+         
+     }
     
+    public static void q9()
+    {
+        
+        Scanner scanner = new Scanner(System.in);
+        
+        // 5개의 문자를 저장할 배열 생성
+        char[] characters = new char[5];
+
+        // 5개의 문자 입력 받기
+        System.out.print("영어 문자 5개를 입력하세요: ");
+        for (int i = 0; i < 5; i++) {
+            characters[i] = scanner.next().charAt(0);
+        }
+
+        // 한 번에 한 칸씩 shift하여 출력
+        for (int i = 0; i < 5; i++) {
+            // Shift된 배열 생성
+            for (int j = 0; j < 5; j++) {
+                // 배열 인덱스를 계산하여 출력
+                System.out.print(characters[(j + i) % 5]);
+            }
+            System.out.println(); // 줄 바꿈
+        }
+
+        scanner.close();
+    }
     public static void main(String[] args) 
     {
         

@@ -7,278 +7,258 @@ public class Main
     {
       
         Scanner scanner = new Scanner(System.in);
-
-        System.out.print("첫 번째 정수를 입력하세요: ");
-        int num1 = scanner.nextInt();
-
-        System.out.print("두 번째 정수를 입력하세요: ");
-        int num2 = scanner.nextInt();
-
-        if (num1 > num2)
-               System.out.println(num1 + " > " + num2 );
-        if (num1 < num2)
-            System.out.println(num1 + " < " + num2 );
-        if (num1 == num2)
-            System.out.println(num1 + " == " + num2);
-        if (num1 != num2)
-            System.out.println(num1 + " != " + num2);
-        if (num1 >= num2)
-            System.out.println(num1 + " >= " + num2);
-        if (num1 <= num2)
-        System.out.println(num1 + " <= " + num2);
-
+        
+        // 양의 정수 N 입력 받기
+        System.out.print("양의 정수 N을 입력하세요: ");
+        int N = scanner.nextInt();
+        
+        // 삼각형 출력
+        int count = 0;
+        int index = 1;
+        for (int i = 0; i < N; i++) {
+            // 줄 바꿈
+            
+            for (int j = 0; j < index; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+            index += 2;
+            count++;
+        }
+        
         scanner.close();
     }
       
     public static void q2()
     {
-       // 지구의 반지름 (km)
-        final double RADIUS = 6371.01;
-
-        Scanner scanner = new Scanner(System.in);
-
-        // 첫 번째 지점의 위도와 경도 입력
-        System.out.print("첫 번째 지점의 위도(x1)를 입력하세요 (단위: 도): ");
-        double x1 = Math.toRadians(scanner.nextDouble()); // 라디안으로 변환
-        System.out.print("첫 번째 지점의 경도(y1)를 입력하세요 (단위: 도): ");
-        double y1 = Math.toRadians(scanner.nextDouble()); // 라디안으로 변환
-
-        // 두 번째 지점의 위도와 경도 입력
-        System.out.print("두 번째 지점의 위도(x2)를 입력하세요 (단위: 도): ");
-        double x2 = Math.toRadians(scanner.nextDouble()); // 라디안으로 변환
-        System.out.print("두 번째 지점의 경도(y2)를 입력하세요 (단위: 도): ");
-        double y2 = Math.toRadians(scanner.nextDouble()); // 라디안으로 변환
-
-        // 거리 계산
-        double distance = RADIUS * Math.acos(Math.sin(x1) * Math.sin(x2) +
-                         Math.cos(x1) * Math.cos(x2) * Math.cos(y1 - y2));
-
-        // 결과 출력
-        System.out.printf("두 지점 사이의 거리: %.2f km\n", distance);
-
-        scanner.close();
+              
+       Scanner scanner = new Scanner(System.in);
+        // 양의 정수 N 입력 받기
+       System.out.print("양의 정수 N을 입력하세요: ");
+       int N = scanner.nextInt();
         
-       
+        // 삼각형 출력
+       int count = 0;
+       int index = 1;
+       for (int i = 0; i < N; i++) {
+            // 줄 바꿈
+             // 별의 개수 계산 (2 * (N - i) - 1)
+            int stars = 2 * (N - i) - 1;
+            
+            for (int j = 0; j < stars; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+            
+            count++;
+       }
+        
+        scanner.close();
         
     }
     
     public static void q3()
     {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("양의 정수 N을 입력하세요: ");
-        int N = scanner.nextInt();
-
-        int i = 1; // 약수를 찾기 위한 변수
-        System.out.print("N의 약수: ");
-
-        // N의 약수를 찾기 위한 while 문
-        while (i <= N) {
-            if (N % i == 0) {
-                System.out.print(i + " "); // 약수 출력
-            }
-            i++; // i를 증가시킴
+         Scanner scanner = new Scanner(System.in);
+        
+        // 정수 다섯 개를 저장할 배열 생성
+        int[] numbers = new int[5];
+        
+        // 사용자로부터 정수 입력 받기
+        System.out.println("정수 다섯 개를 입력하세요:");
+        for (int i = 0; i < 5; i++) {
+            System.out.print((i + 1) + "번째 정수: ");
+            numbers[i] = scanner.nextInt();
         }
-
-        scanner.close();
+        
+        // 첫 번째 큰 수와 두 번째 큰 수 초기화
+        int firstLargest = Integer.MIN_VALUE;
+        int secondLargest = Integer.MIN_VALUE;
+        
+        // 배열을 순회하며 첫 번째와 두 번째 큰 수 찾기
+        for (int number : numbers) {
+            if (number > firstLargest) {
+                secondLargest = firstLargest; // 이전의 첫 번째 큰 수를 두 번째 큰 수로 이동
+                firstLargest = number; // 새로운 첫 번째 큰 수
+            } else if (number > secondLargest && number != firstLargest) {
+                secondLargest = number; // 새로운 두 번째 큰 수
+            }
+        }
+        
+        // 결과 출력
+        System.out.println("첫 번째 큰 수: " + firstLargest);
+        System.out.println("두 번째 큰 수: " + secondLargest);
+        
+        scanner.close();       
         
     }
     
     public static void q4()
     {
-        
-       Scanner scanner = new Scanner(System.in);
+         Scanner scanner = new Scanner(System.in);
+        int[] numbers = new int[10];
+        int count1 = 0, count2 = 0, count3 = 0;
 
-        // 1. 국어, 영어, 수학 점수를 입력 받음
-        System.out.print("국어, 영어, 수학 점수를 입력하세요 (0 ~ 100): ");
-        int korean = scanner.nextInt();
-        int english = scanner.nextInt();
-        int math = scanner.nextInt();
+        System.out.println("1, 2, 3 중 하나의 숫자를 10개 입력하세요:");
 
-        // 2. 평균 계산
-        double average = (korean + english + math) / 3.0;
+        for (int i = 0; i < 10; i++) {
+            while (true) {
+                System.out.print((i + 1) + "번째 숫자: ");
+                int input = scanner.nextInt();
 
-        // 3. 학점 결정
-        char grade;
-        if (average >= 75) {
-            grade = 'A';
-        } else if (average >= 50) {
-            grade = 'B';
-        } else {
-            grade = 'F';
+                if (input == 1 || input == 2 || input == 3) {
+                    numbers[i] = input; // 배열에 저장
+                    break; // 올바른 입력이므로 반복 종료
+                } else {
+                    System.out.println("잘못된 입력입니다. 1, 2, 3 중 하나를 입력하세요.");
+                }
+            }
         }
 
-        // 4. 결과 출력
-        System.out.printf("%.2f %c\n", average, grade);
-
-        scanner.close();
-    }
-    
-    public static void q5()
-    {
-        Scanner scanner = new Scanner(System.in);
-
-        // 음료 선택 입력
-        System.out.print("음료 종류를 선택하세요 (1: Americano, 2: Cafe Latte, 3: Lemon Tea): ");
-        int N = scanner.nextInt();
-
-        // 투입한 금액 입력
-        System.out.print("투입한 금액을 입력하세요 (100의 배수): ");
-        int M = scanner.nextInt();
-
-        // 음료 가격과 이름 초기화
-        String beverage = "";
-        int price = 0;
-
-        // 음료 종류에 따른 가격 설정
-        switch (N) {
-            case 1:
-                beverage = "Americano";
-                price = 500;
-                break;
-            case 2:
-                beverage = "Cafe Latte";
-                price = 400;
-                break;
-            case 3:
-                beverage = "Lemon Tea";
-                price = 300;
-                break;
-            default:
-                System.out.println("잘못된 음료 선택입니다.");
-                scanner.close();
-                return; // 프로그램 종료
+        // 각 숫자의 개수 세기
+        for (int number : numbers) {
+            if (number == 1) {
+                count1++;
+            } else if (number == 2) {
+                count2++;
+            } else if (number == 3) {
+                count3++;
+            }
         }
-
-        // 잔돈 계산
-        int change = M - price;
-        int num500 = change / 500; // 500원 짜리 개수
-        change %= 500; // 잔돈에서 500원 짜리를 뺀 나머지
-        int num100 = change / 100; // 100원 짜리 개수
 
         // 결과 출력
-        System.out.println(beverage + "를 선택하셨습니다.");
-        System.out.println("잔돈: " + num500 + "개 (500원), " + num100 + "개 (100원)");
-
-        scanner.close();
-        
-    }
-    
-    public static void q6()
-    {
-        Scanner scanner = new Scanner(System.in);
-
-        // 양의 정수 N 입력
-        System.out.print("양의 정수 N을 입력하세요: ");
-        int N = scanner.nextInt();
-
-        // 삼각형 출력
-        for (int i = 0; i < N; i++) {
-            // 공백 출력
-            for (int j = 0; j < N - i - 1; j++) {
-                System.out.print(" "); // 공백 출력
-            }
-            // 별 출력
-            for (int k = 0; k < 2 * i + 1; k++) {
-                System.out.print("*"); // 별 출력
-            }
-            // 줄 바꿈
-            System.out.println();
+        System.out.println("출력 결과:");
+        System.out.print("1 : ");
+        for (int j = 0; j < count1; j++) {
+            System.out.print("*");
         }
+        System.out.println();
 
-        scanner.close();
-        
-    }
-    
-    public static void q7()
-    {
-        Scanner scanner = new Scanner(System.in);
+        System.out.print("2 : ");
+        for (int j = 0; j < count2; j++) {
+            System.out.print("*");
+        }
+        System.out.println();
 
-        // 기준 정수 입력
-        System.out.print("기준 정수를 입력하세요: ");
-        int answer = scanner.nextInt();
-        
-        int guess;
-        int attempts = 0;
-
-        do {
-            // 정수 입력
-            System.out.print("정답 입력: ");
-            guess = scanner.nextInt();
-            attempts++; // 시도 횟수 증가
-
-            // 대소 관계 출력
-            if (guess < answer) {
-                System.out.println(guess + "보다 높습니다");
-            } else if (guess > answer) {
-                System.out.println(guess + "보다 낮습니다");
-            } else {
-                System.out.println(guess + " 정답입니다");
-            }
-
-        } while (guess != answer); // 정답이 아닐 경우 반복
-
-        // 시도 횟수 출력
-        System.out.println("시도횟수는 " + attempts + "입니다");
+        System.out.print("3 : ");
+        for (int j = 0; j < count3; j++) {
+            System.out.print("*");
+        }
+        System.out.println();
 
         scanner.close();
     }
       
-     public static void q8()
+     public static void q5()
      {
-        Scanner scanner = new Scanner(System.in);
-        char[] characters = new char[7];
-
-        // 7개의 문자 입력 받기
-        System.out.print("7개의 문자를 입력하세요: ");
-        String temp = scanner.next();
-               
-        // 문자 배열을 문자열로 변환
-        for (int i=0; i<7; i++)
-           characters[i] = temp.charAt(i);
-        
-        // "cat"의 개수 세기
-        int count = 0;
-        int index = 0;
-
-        while ((index = temp.indexOf("cat", index)) != -1) {
-            count++;
-            index += 3; // "cat"의 길이만큼 이동
-        }
-
-        // 결과 출력
-        System.out.println(count);
-
-        scanner.close();
-         
-     }
-    
-    public static void q9()
-    {
         
         Scanner scanner = new Scanner(System.in);
+        int N;
         
-        // 5개의 문자를 저장할 배열 생성
-        char[] characters = new char[5];
+        // N 입력 받기
+        do {
+            System.out.print("3~18 사이의 정수 N을 입력하세요: ");
+            N = scanner.nextInt();
+        } while (N < 3 || N > 18);
 
-        // 5개의 문자 입력 받기
-        System.out.print("영어 문자 5개를 입력하세요: ");
-        for (int i = 0; i < 5; i++) {
-            characters[i] = scanner.next().charAt(0);
-        }
+        System.out.println("주사위의 합이 " + N + "이 되는 경우:");
 
-        // 한 번에 한 칸씩 shift하여 출력
-        for (int i = 0; i < 5; i++) {
-            // Shift된 배열 생성
-            for (int j = 0; j < 5; j++) {
-                // 배열 인덱스를 계산하여 출력
-                System.out.print(characters[(j + i) % 5]);
+        // 중첩 반복문을 사용하여 모든 경우의 수 찾기
+        for (int i = 1; i <= 6; i++) { // 첫 번째 주사위
+            for (int j = 1; j <= 6; j++) { // 두 번째 주사위
+                for (int k = 1; k <= 6; k++) { // 세 번째 주사위
+                    if (i + j + k == N) {
+                        System.out.println(i + " " + j + " " + k);
+                    }
+                }
             }
-            System.out.println(); // 줄 바꿈
         }
 
         scanner.close();
+     
     }
+
+     
+    public static void q6()
+    {
+        Scanner scanner = new Scanner(System.in);
+        
+        // N 입력 받기
+        System.out.print("홀수인 양의 정수 N을 입력하세요: ");
+        int N = scanner.nextInt();
+        
+        // N이 홀수인지 확인
+        if (N % 2 == 0) {
+            System.out.println("N은 홀수여야 합니다.");
+        } else {
+            // 중첩 반복문을 사용하여 출력
+            for (int i = 0; i < N; i++) {
+                for (int j = 0; j < N; j++) {
+                    if (j == i || j == (N - 1 - i)) {
+                        System.out.print("X ");
+                    } else {
+                        System.out.print("O ");
+                    }
+                }
+                System.out.println(); // 줄 바꿈
+            }
+        }
+        
+        scanner.close();
+            
+    }
+    
+    
+    public static void q7()
+    {
+       Scanner scanner = new Scanner(System.in);
+        
+        // 정답 단어 설정
+        
+        String answer = scanner.next();
+        char[] answerArray = answer.toCharArray();
+        char[] currentGuess = {'_', '_', '_'}; // 현재 상태 초기화
+        int attempts = 5; // 최대 시도 횟수
+               
+        System.out.println("3글자의 영단어를 맞춰보세요! (5번의 시도 기회가 있습니다.)");
+        
+        while (attempts > 0) {
+            System.out.print("한 글자를 입력하세요: ");
+            char guess = scanner.next().charAt(0);
+            boolean correctGuess = false;
+
+            // 입력한 글자가 정답에 있는지 확인
+            for (int i = 0; i < answerArray.length; i++) {
+                if (answerArray[i] == guess) {
+                    currentGuess[i] = guess; // 맞춘 글자를 현재 상태에 반영
+                    correctGuess = true;
+                }
+            }
+
+            // 현재 상태 출력
+            System.out.println("현재 상태: " + new String(currentGuess));
+
+            // 정답을 맞춘 경우
+            if (new String(currentGuess).equals(answer)) {
+                System.out.println("축하합니다! 정답을 맞추셨습니다: " + answer);
+                break;
+            }
+
+            // 시도 횟수 감소
+            attempts--;
+            System.out.println("남은 시도 횟수: " + attempts);
+        }
+
+        // 시도 횟수를 모두 소진한 경우
+        if (attempts == 0) {
+            System.out.println("시도 횟수를 모두 소진했습니다. 정답은: " + answer);
+        }
+
+        scanner.close();
+    
+        
+    }
+    
     public static void main(String[] args) 
     {
         

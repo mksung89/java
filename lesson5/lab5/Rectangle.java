@@ -8,9 +8,24 @@
 public class Rectangle
 {
    
-    public Rectangle()
-    {
-       
+     // 세로 길이와 가로 길이
+    int height;
+    int width;
+
+    // 생성자
+    public Rectangle(int height, int width) {
+        this.height = height;
+        this.width = width;
+    }
+
+    // 면적을 계산하는 메소드
+    public int getArea() {
+        return height * width;
+    }
+
+    // 둘레 길이를 계산하는 메소드
+    public int getPerimeter() {
+        return 2 * (height + width);
     }
 
     
